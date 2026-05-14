@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Tốt Nghiệp - Tiểu My</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-main: #2196F3; /* Xanh dương chủ đạo */
+            --blue-light: #E3F2FD;
+            --pink-accent: #FF4081; /* Hồng tạo điểm nhấn */
+            --pink-soft: #FCE4EC;
+            --white: #FFFFFF;
+            --text-dark: #2c3e50;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            /* Nền chuyển màu từ xanh dương nhạt sang hồng nhạt */
+            background: linear-gradient(135deg, #e0f2fe 0%, #fce7f3 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Trang trí bông tuyết hoặc chấm tròn nhẹ nhàng */
+        .decor-bg {
+            position: fixed;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: radial-gradient(circle, var(--blue-main) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+        }
+
+        /* TRANG 1: NHẬP TÊN */
+        #input-page {
+            z-index: 10;
+            text-align: center;
+            transition: all 0.8s ease;
+        }
+
+        .input-group {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(33, 150, 243, 0.15);
+            border: 4px solid var(--blue-light);
+        }
+
+        h2 { color: var(--blue-main); font-family: 'Dancing Script', cursive; font-size: 2.2rem; margin-top: 0; }
+
+        input[type="text"] {
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid var(--blue-light);
+            width: 80%;
+            margin: 20px 0;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--pink-accent);
+        }
+
+        button {
+            padding: 12px 35px;
+            border-radius: 25px;
+            border: none;
+            /* Nút màu xanh dương gradient hồng */
+            background: linear-gradient(45deg, var(--blue-main), var(--pink-accent));
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        /* TRANG 2: THIỆP MỜI */
+        #invitation-page {
+            display: none;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .card {
+            width: 380px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 40px;
+            border: 10px double var(--blue-light);
+            position: relative;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            animation: fadeInCard 1.2s ease-out;
+        }
+
+        @keyframes fadeInCard {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .title-main {
+            font-size: 2.2rem;
+            color: var(--blue-main);
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .sub-title {
+            color: var(--pink-accent);
+            font-size: 1.3rem;
+            margin: 5px 0;
+        }
+
+        .event-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.8rem;
+            color: var(--blue-main);
+            margin: -5px 0;
+            text-shadow: 2px 2px var(--blue-light);
+        }
+
+        .invite-text {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-top: 25px;
+            font-weight: 600;
+        }
+
+        #display-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--pink-accent);
+            display: inline-block;
+            margin: 10px 0 25px 0;
+            position: relative;
+        }
+
+        #display-name::after {
+            content: '';
+            position: absolute;
+            bottom: 5px; left: 0; width: 100%; height: 2px;
+            background: var(--pink-soft);
+        }
+
+        /* Khung thông tin */
+        .info-box {
+            background: var(--blue-light);
+            border-radius: 20px;
+            padding: 15px;
+            margin: 10px auto;
+            width: 90%;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        .icon-circle {
+            width: 40px; height: 40px;
+            background: var(--white);
+            color: var(--blue-main);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .time-detail b { color: var(--blue-main); font-size: 0.8rem; display: block; text-align: left;}
+        .time-detail span { color: var(--text-dark); font-size: 1.4rem; font-weight: bold; }
+
+        .footer-note {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--blue-main);
+            margin-top: 25px;
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <div class="decor-bg"></div>
+
+    <!-- TRANG 1 -->
+    <div id="input-page">
+        <div class="input-group">
+            <h2>Chào mừng you đến với lễ tốt nghiệp của My</h2>
+            <p>Cho toi biết mí ngừ là ai???</p>
+            <input type="text" id="nameInput" placeholder="Nhập tên mí người vô đây...">
+            <br>
+            👉 <button onclick="showInvitation()">Mở thiệp ngay</button> 👈
+        </div>
+    </div>
+
+    <!-- TRANG 2 -->
+    <div id="invitation-page">
+        <div class="card">
+            <div class="title-main">THIỆP MỜI</div>
+            <div class="sub-title">♥ DỰ LỄ ♥</div>
+            <div class="event-name">Tốt nghiệp</div>
+            
+            <div class="invite-text">Trân trọng và long trọng kính mời</div>
+            <div id="display-name">Khách mời quý hóa</div>
+            <div class="invite-text">Đến dự</div>
+            <div class="info-box">
+                <div class="info-item">
+                    <div class="icon-circle">📅</div>
+                    <div class="time-detail">
+                        <b>NGÀY DIỄN RA</b>
+                        <span>30/5/2026</span>
+                    </div>
+                </div>
+                <div style="border-top: 1px dashed var(--white); margin: 5px 0;"></div>
+                <div class="info-item">
+                    <div class="icon-circle">⏰</div>
+                    <div class="time-detail">
+                        <b>THỜI GIAN</b>
+                        <span>10:00 GIỜ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-note">
+                Nhớ đến dự cùng Tiểu My nhóooo 😘
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showInvitation() {
+            const name = document.getElementById('nameInput').value;
+            if (name.trim() === "") {
+                alert("Aiu ơi, phải nhập tên thì thiệp mới hiện được nè!");
+                return;
+            }
+
+            document.getElementById('display-name').innerText = name;
+
+            const inputPage = document.getElementById('input-page');
+            const inviPage = document.getElementById('invitation-page');
+
+            inputPage.style.transform = "scale(0.8)";
+            inputPage.style.opacity = '0';
+            
+            setTimeout(() => {
+                inputPage.classList.add('hidden');
+                inviPage.style.display = 'block';
+                setTimeout(() => {
+                    inviPage.style.opacity = '1';
+                }, 100);
+            }, 600);
+        }
+    </script>
+</body>
+</html>
