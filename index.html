@@ -56,11 +56,11 @@
         /* --- CẬP NHẬT: CANH LỀ TRÊN 20PX SO VỚI MÀN HÌNH --- */
         .title-box {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 85%;
-            max-width: 320px;
+            top: 40px;
+            /*left: 50%;*/
+            /*transform: translateX(-50%);*/
+            /*width: 85%;*/
+           /* max-width: 320px;*/
             box-sizing: border-box;
 
             background: var(--white);
@@ -230,7 +230,7 @@
         function showInvitation() {
             const name = document.getElementById('nameInput').value;
             if (name.trim() === "") {
-                alert("Aiu ơi, phải nhập tên thì thiệp mới hiện được nè!");
+                alert("phải nhập tên thì thiệp mới hiện được nè!");
                 return;
             }
             document.getElementById('display-name').innerText = name;
