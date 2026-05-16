@@ -19,22 +19,23 @@
             margin: 0; padding: 0;
             width: 100%; height: 100%;
             font-family: 'Quicksand', sans-serif;
-            /* Ảnh nền mặc định ban đầu */
             background: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            transition: background 0.8s ease; /* Hiệu ứng đổi nền mượt mà */
+            transition: background 0.8s ease; 
         }
+
         body.bg-white-active {
             background: #FFFFFF !important;
         }
-         #input-page {
+
+        #input-page {
             z-index: 10;
             text-align: center;
             transition: all 0.8s ease;
-          position: fixed;
+            position: fixed;
             top: 0; left: 0; 
             width: 100%; height: 100%;
             display: flex;
@@ -45,37 +46,71 @@
             background-position: center; 
             background-repeat: no-repeat;
         }
-        }
+
         .input-group {
-            background: transparent; 
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            /* Viền trắng mờ nhẹ */
-            border: 2px solid rgba(255, 255, 255, 0.3); 
-            width: 320px;
+            width: 100%;
+            height: 100%;
+            position: relative;
         }
-        h2 { 
-            color: #ffffff; 
+
+        /* --- CẬP NHẬT: CANH LỀ TRÊN 20PX SO VỚI MÀN HÌNH --- */
+        .title-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            max-width: 320px;
+            box-sizing: border-box;
+
+            background: var(--white);
+            color: #000000;
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        } 
+
+        .title-box h2 { 
+            color: #000000; 
             font-family: 'Dancing Script', cursive; 
-            font-size: 2.2rem; 
-            margin-top: 0;
+            font-size: 1.7rem; 
+            margin: 0;
         }
-        p {
-            color: #ffffff;
-            font-weight: 600;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+
+        /* --- CẬP NHẬT: CANH LỀ DƯỚI BUTTON 25PX VÀ Ô NHẬP TÊN CÁCH BUTTON 10PX --- */
+        .action-box {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        input[type="text"] {
+
+        .action-box input[type="text"] {
+            margin: 0 0 10px 0; /* Cách lề dưới (nút button) đúng 10px */
             padding: 15px;
             border-radius: 15px;
             border: 2px solid var(--blue-light);
             width: 85%;
-            margin: 20px 0;
+            max-width: 280px;
             font-size: 1rem;
             outline: none;
             background: rgba(255, 255, 255, 0.9);
+            text-align: center;
         }
+
+        .btn-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
         button {
             padding: 12px 35px;
             border-radius: 25px;
@@ -87,7 +122,10 @@
             box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
             transition: transform 0.3s;
         }
+
         button:hover { transform: scale(1.05); }
+
+        /* TRANG 2: THIỆP MỜI */
         #invitation-page {
             background: var(--white);
             display: none;
@@ -95,6 +133,7 @@
             opacity: 0;
             transition: opacity 1s ease;
         }
+
         .card {
             width: 380px;
             background: var(--white);
@@ -106,14 +145,17 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             animation: fadeInCard 1.2s ease-out;
         }
+
         @keyframes fadeInCard {
             from { transform: translateY(50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+
         .title-main { font-size: 2.2rem; color: var(--blue-main); margin: 0; font-weight: 600; letter-spacing: 2px; }
         .sub-title { color: var(--pink-accent); font-size: 1.3rem; margin: 5px 0; }
         .event-name { font-family: 'Dancing Script', cursive; font-size: 3.8rem; color: var(--blue-main); margin: -5px 0; text-shadow: 2px 2px var(--blue-light); }
         .invite-text { font-size: 1rem; color: var(--text-dark); margin-top: 25px; font-weight: 600; }
+        
         #display-name {
             font-family: 'Dancing Script', cursive;
             font-size: 2.5rem;
@@ -122,23 +164,11 @@
             margin: 10px 0 25px 0;
             position: relative;
         }
+
         #display-name::after {
             content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 2px; background: var(--pink-soft);
         }
-        .title-box {
-            background: var(--white);
-            color: #000000;
-            padding: 25px 20px;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            margin-bottom: 25px;
-        } 
-        .title-box h2 { 
-            color: #000000; 
-            font-family: 'Dancing Script', cursive; 
-            font-size: 1.7rem; 
-            margin: 0 0 10px 0;
-        }
+
         .info-box { background: var(--blue-light); border-radius: 20px; padding: 15px; margin: 10px auto; width: 90%; }
         .info-item { display: flex; align-items: center; gap: 15px; margin: 10px 0; }
         .icon-circle { width: 40px; height: 40px; background: var(--white); color: var(--blue-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
@@ -151,13 +181,18 @@
 <body>
     <div id="input-page">
         <div class="input-group">
+            
             <div class="title-box">
                 <h2>Thân mời bạn đến chung vui ngày tốt nghiệp cùng Tiểu My!</h2>
             </div>
-            <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-            <input type="text" id="nameInput" placeholder="Nhập tên của bạn...">
-            <br>
-            👉 <button onclick="showInvitation()">Mở thiệp ngay</button> 👈
+            
+            <div class="action-box">
+                <input type="text" id="nameInput" placeholder="Nhập tên của bạn...">
+                <div class="btn-wrap">
+                    👉 <button onclick="showInvitation()">Mở thiệp ngay</button> 👈
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -190,19 +225,23 @@
             </div>
         </div>
     </div>
+    
     <script>
         function showInvitation() {
             const name = document.getElementById('nameInput').value;
             if (name.trim() === "") {
-                alert("phải nhập tên thì thiệp mới hiện được nè!");
+                alert("Aiu ơi, phải nhập tên thì thiệp mới hiện được nè!");
                 return;
             }
             document.getElementById('display-name').innerText = name;
+            
             const inputPage = document.getElementById('input-page');
             const inviPage = document.getElementById('invitation-page');
+            
             document.body.classList.add('bg-white-active');
             inputPage.style.transform = "scale(0.8)";
             inputPage.style.opacity = '0';
+            
             setTimeout(() => {
                 inputPage.classList.add('hidden');
                 inviPage.style.display = 'block';
